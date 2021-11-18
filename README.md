@@ -6,6 +6,8 @@ The purpose of this repoository is to use the OpenKMIP library to functionally t
 - `Terraform v1.0.7`
 - `jq-1.6`
 
+Although these are the specific binary versions that i used when testing, i would expect any Vault with the KMIP Secrets Engine to work.
+
 ## High level steps
 1. Start Vault server
 2. Configure Vault KMIP Secret Engine with Terraform
