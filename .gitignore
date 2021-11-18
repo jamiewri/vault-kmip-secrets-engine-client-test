@@ -1,0 +1,16 @@
+venv/
+__pycache_
+*/__pycache__
+*.swp
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+.terraform
+credential.json
+cert.pem
+key.pem
+ca.pem
+src/credential.json
+src/cert.pem
+src/key.pem
+src/ca.pem
