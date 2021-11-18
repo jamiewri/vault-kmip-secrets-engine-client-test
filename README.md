@@ -71,6 +71,14 @@ Config file ['/root/.pykmip/pykmip.conf', '/etc/pykmip/pykmip.conf', '/usr/local
 2021-11-18 03:25:21,679 - demo - INFO - Successfully destroyed secret with ID: 4L2Xc42pQo3V3QIBzFut37NLhZgtfKv6
 ```
 
+Excerpt from Vault Audit Logs
+```
+{"time":"2021-11-18T03:58:45.389287Z","type":"kmip-response","auth":{"token_type":"default"},"request":{"namespace":{"id":"root"},"data":{"kmip_request":
+<..> 
+[{"tag":"UniqueIdentifier","type":"TextString","value":"4L2Xc42pQo3V3QIBzFut37NLhZgtfKv6"}]
+<...
+```
+
 KMIP Operations tested, in order of operation.
 - operation_create
 - operation_get
