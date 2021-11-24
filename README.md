@@ -56,21 +56,26 @@ docker run \
   --env KMIP_KEY=key.pem \
   --env KMIP_CA=ca.pem \
   --volume ${PWD}/src:/usr/src/app \
-  jamiewri/vault-kmip-client-test:0.1
+  jamiewri/vault-kmip-client-test:0.2
 
 
 Config file ['/root/.pykmip/pykmip.conf', '/etc/pykmip/pykmip.conf', '/usr/local/lib/python3.7/site-packages/kmip/pykmip.conf', '/usr/local/lib/python3.7/site-packages/kmip/kmipconfig.ini'] not found
-2021-11-18 03:25:21,517 - demo - INFO - Successfully created symmetric key with ID: 4L2Xc42pQo3V3QIBzFut37NLhZgtfKv6
-2021-11-18 03:25:21,593 - demo - INFO - Successfully retrieved secret with ID: 4L2Xc42pQo3V3QIBzFut37NLhZgtfKv6
-2021-11-18 03:25:21,593 - demo - INFO - Secret data: b'3ec8d789147fc436789a5ea2ecb5d7ba'
-2021-11-18 03:25:21,634 - demo - INFO - Successfully retrieved 6 attribute names:
-2021-11-18 03:25:21,634 - demo - INFO - Attribute name: Always Sensitive
-2021-11-18 03:25:21,634 - demo - INFO - Attribute name: Extractable
-2021-11-18 03:25:21,634 - demo - INFO - Attribute name: Never Extractable
-2021-11-18 03:25:21,634 - demo - INFO - Attribute name: Object Type
-2021-11-18 03:25:21,634 - demo - INFO - Attribute name: Sensitive
-2021-11-18 03:25:21,634 - demo - INFO - Attribute name: State
-2021-11-18 03:25:21,679 - demo - INFO - Successfully destroyed secret with ID: 4L2Xc42pQo3V3QIBzFut37NLhZgtfKv6
+2021-11-24 18:55:50,626 - demo - INFO - Successfully created symmetric key with ID: ZcTWJ63VuJnlcCy8wbFohUSDZ6LSAWvl
+2021-11-24 18:55:50,669 - demo - INFO - Successfully activated: ZcTWJ63VuJnlcCy8wbFohUSDZ6LSAWvl
+2021-11-24 18:55:50,743 - demo - INFO - Successfully retrieved secret with ID: ZcTWJ63VuJnlcCy8wbFohUSDZ6LSAWvl
+2021-11-24 18:55:50,744 - demo - INFO - Secret data: b'a964b88278ffb094980d6416d18bc7de'
+2021-11-24 18:55:50,782 - demo - INFO - Successfully retrieved 1 attributes:
+2021-11-24 18:55:50,782 - demo - INFO - Attribute State: State.ACTIVE
+2021-11-24 18:55:50,831 - demo - INFO - Successfully revoked secret with ID: ZcTWJ63VuJnlcCy8wbFohUSDZ6LSAWvl
+2021-11-24 18:55:50,878 - demo - INFO - Successfully retrieved 6 attribute names:
+2021-11-24 18:55:50,878 - demo - INFO - Attribute name: Always Sensitive
+2021-11-24 18:55:50,878 - demo - INFO - Attribute name: Extractable
+2021-11-24 18:55:50,878 - demo - INFO - Attribute name: Never Extractable
+2021-11-24 18:55:50,878 - demo - INFO - Attribute name: Object Type
+2021-11-24 18:55:50,879 - demo - INFO - Attribute name: Sensitive
+2021-11-24 18:55:50,879 - demo - INFO - Attribute name: State
+2021-11-24 18:55:50,976 - demo - INFO - Successfully destroyed secret with ID: AhhnLis8KZvVkRVgmyymzbnxWs13OgyE
+{"results": [{"operationName": "operation_create", "successful": true}, {"operationName": "operation_activate", "successful": true}, {"operationName": "operation_get", "successful": true}, {"operationName": "operation_get_attributes", "successful": true}, {"operationName": "operation_revoke", "successful": true}, {"operationName": "operation_get_attribute_list", "successful": true}, {"operationName": "operation_destroy", "successful": true}]}
 ```
 
 Excerpt from Vault Audit Logs
@@ -83,14 +88,53 @@ Excerpt from Vault Audit Logs
 
 KMIP Operations tested, in order of operation.
 - operation_create
+- operation_activate
 - operation_get
+- operation_get_attribute
+- operation_revoke
 - operation_get_attribute_list
 - operation_destroy
 
+Example test output saved to `results.json`
+```json
+{
+  "results": [
+    {
+      "operationName": "operation_create",
+      "successful": true
+    },
+    {
+      "operationName": "operation_activate",
+      "successful": true
+    },
+    {
+      "operationName": "operation_get",
+      "successful": true
+    },
+    {
+      "operationName": "operation_get_attributes",
+      "successful": true
+    },
+    {
+      "operationName": "operation_revoke",
+      "successful": true
+    },
+    {
+      "operationName": "operation_get_attribute_list",
+      "successful": true
+    },
+    {
+      "operationName": "operation_destroy",
+      "successful": true
+    }
+  ]
+}
+```
 
 ## Local Developement
 MacOS
 ```
+cd src
 python3 -m venv venv
 source ./venv/bin/activate
 python3 -m pip install -r requirements.txt
