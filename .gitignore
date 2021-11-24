@@ -15,3 +15,4 @@ src/cert.pem
 src/key.pem
 src/ca.pem
 src/.env
+src/venv
