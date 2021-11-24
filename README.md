@@ -56,7 +56,7 @@ docker run \
   --env KMIP_KEY=key.pem \
   --env KMIP_CA=ca.pem \
   --volume ${PWD}/src:/usr/src/app \
-  jamiewri/vault-kmip-client-test:0.2
+  jamiewri/vault-kmip-client-test:0.3
 
 
 Config file ['/root/.pykmip/pykmip.conf', '/etc/pykmip/pykmip.conf', '/usr/local/lib/python3.7/site-packages/kmip/pykmip.conf', '/usr/local/lib/python3.7/site-packages/kmip/kmipconfig.ini'] not found
